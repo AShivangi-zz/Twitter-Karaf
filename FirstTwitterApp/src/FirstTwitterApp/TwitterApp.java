@@ -41,10 +41,30 @@ public class TwitterApp {
 		
 		//API 4: Finding tweets with keywords "YouTube" and "shooting"
 	  	//INDERJIT
+        
+        Query q = new Query("youtube"+"shooting");
+        QueryResult qr = twitter.search(q);
+        System.out.println("Showing results for \"YouTube\" and \"shooting\":");
+        System.out.println();
+        for (Status s : qr.getTweets()) {
+            System.out.println("@" + s.getUser().getScreenName() + ":" + s.getText());
+        }
 		
 		
 		//API 5: Getting followers
 		//INDERJIT
+        
+        IDs id = twitter.getFollowersIDs(twitter.getScreenName(), -1);
+        long[] idslist = id.getIDs();
+        System.out.println(twitter.getScreenName()+" is followed by:");
+        System.out.println();
+        int x= 1;
+        for (long i : idslist) {
+            twitter4j.User user = twitter.showUser(i);
+            System.out.println( x +". "+ user.getScreenName()+" follows you!");
+            x++;
+        }
+        System.out.println();
 
 
 
