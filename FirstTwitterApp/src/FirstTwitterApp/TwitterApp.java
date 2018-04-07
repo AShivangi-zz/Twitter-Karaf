@@ -28,13 +28,15 @@ public class TwitterApp {
 		
 		//API 2: Posting a tweet
 		//TYLER
-		
+		Status tweet = twitter.updateStatus("Mmmooooooooooooo!!");
+	    	System.out.println("Successfully tweeted ----> " + tweet.getText());
 	    
 		
 		
 		//API 3: Direct messaging
 	    //TYLER
-	    
+	    	DirectMessage dm = twitter.sendDirectMessage(twitter.getScreenName(), "What kind of magic do cows believe in? MOODOO.");
+	    	System.out.println("\""+dm.getText() +"\" was sent to @" + dm.getRecipientScreenName());
 	    
 	    
 		
