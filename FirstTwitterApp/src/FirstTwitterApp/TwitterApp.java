@@ -71,15 +71,34 @@ public class TwitterApp {
 
 
 		
-		//API 6: Getting Followers of followers
-	    //LANCE
+		// API 6: Getting Followers of followers
+      for (long y : idslist) {
+          twitter4j.User user = twitter.showUser(y);
+          // idofFoF = id of follower of follower
+          IDs idofFoF = twitter.getFollowersIDs(user.getScreenName(), -1);
+          System.out.println(user.getScreenName()+" is followed by:");
+          long[] idofFoFList = idofFoF.getIDs();
+          int z=1;
+          for (long a : idofFoFList) {
+              System.out.println(z + ": " + twitter.showUser(a).getScreenName());
+              z++;
+          }
+
+      }
         
-
-
-		
 		
 		//API 7: Getting the locations that Twitter has trending topic information for
-	    //LANCE
+		ResponseList<Location> location;
+      location = twitter.getAvailableTrends();
+      System.out.println("Twitter has trending information for the following cities:");
+      int count =1;
+      
+		for (Location l : location) {
+            // woeid = where on earth identifier by Yahoo!
+        	// is given by l.getWoeid()
+            System.out.println(count +". "+ l.getName() + " in "+ l.getCountryName());
+            count++;      
+        }
 
 		
 		
