@@ -102,13 +102,22 @@ public class TwitterApp {
 
 		
 		
-		//API 8: changing profile pic
-	    //RYAN
+	//API 8
+	//RYAN
+		
+	File updatedPic = new File("C:\\Users\\Steve\\Desktop\\Code\\img.png");
+        twitter.updateProfileImage(updatedPic);
+        System.out.println("Profile picture updated!");
 
+        //API 9
+        //RYAN
         
-        
-	    //API 9: Displaying the tweets on the timeline
-	    //RYAN
+        ResponseList<Status> tt = twitter.getUserTimeline(twitter.getScreenName());
+        for(Status b: tt) {
+                //Displaying the tweets 
+            System.out.println(twitter.getScreenName() +" posted "+b.getText()+" on "+b.getCreatedAt()+ ". It was retweeted "+b.getRetweetCount()+" times.");
+
+        }
 		
 
         
